@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Al-Hijr — Muslim Women Shop</title>
+<meta name="description" content="Al-Hijr — Muslim Women Shop. Бутик в Астане: ул. Мангилик Ел 17А, Коркем-центр.">
+<meta name="theme-color" content="#5C3418">
+<link rel="icon" type="image/png" href="assets/logo-dark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --milk:#F7F0E6;
+    --sand:#E6D3B8;
+    --champagne:#EBD9BD;
+    --chocolate:#7A4A2A;
+    --espresso:#5C3418;
+    --ink:#3E2412;
+    --serif:"Cormorant Garamond", "Times New Roman", serif;
+    --sans:"Manrope", system-ui, -apple-system, sans-serif;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    min-height:100vh; min-height:100svh;
+    background:var(--milk);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* ---------- Background scene ---------- */
+  .scene{
+    position:fixed; inset:0; z-index:-2;
+    background:url("assets/hero.jpg") 62% center/cover no-repeat;
+    transform:scale(1.04);
+    animation:drift 30s ease-in-out infinite alternate;
+  }
+  .veil{
+    position:fixed; inset:0; z-index:-1;
+    background:
+      linear-gradient(180deg,
+        rgba(58,32,15,.62) 0%,
+        rgba(78,46,24,.42) 20%,
+        rgba(120,80,50,.10) 40%,
+        rgba(247,240,230,0) 52%,
+        rgba(247,240,230,.55) 72%,
+        rgba(247,240,230,.92) 100%);
+  }
+  @keyframes drift{ from{transform:scale(1.04) translateY(0)} to{transform:scale(1.09) translateY(-1%)} }
+
+  /* ---------- Layout ---------- */
+  main{
+    width:100%; max-width:560px;
+    min-height:100vh; min-height:100svh;
+    margin:0 auto;
+    padding:clamp(36px,7svh,64px) 20px max(22px,env(safe-area-inset-bottom));
+    display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+    text-align:center;
+  }
+
+  /* top: logo + tagline */
+  .top{display:flex;flex-direction:column;align-items:center;width:100%}
+  .logo{
+    width:min(74%, 330px);
+    height:auto;
+    filter:drop-shadow(0 4px 20px rgba(40,20,8,.40));
+    opacity:0; animation:rise 1.2s .1s var(--ease) forwards;
+  }
+  .eyebrow{
+    margin-top:18px;
+    display:flex; align-items:center; gap:16px;
+    font-size:11px; font-weight:500;
+    letter-spacing:.44em; text-transform:uppercase;
+    color:rgba(255,250,242,.95);
+    text-shadow:0 1px 12px rgba(40,20,8,.45);
+    opacity:0; animation:rise 1.2s .3s var(--ease) forwards;
+  }
+  .eyebrow::before,.eyebrow::after{
+    content:""; width:34px; height:1px; background:rgba(255,250,242,.8);
+    box-shadow:0 0 8px rgba(40,20,8,.55);
+  }
+  .eyebrow span{padding-left:.44em}
+
+  /* bottom: glass panel */
+  .panel{
+    width:100%;
+    margin-top:36px;
+    padding:26px 22px 22px;
+    border-radius:26px;
+    background:rgba(250,245,237,.78);
+    -webkit-backdrop-filter:blur(22px);
+    backdrop-filter:blur(22px);
+    border:1px solid rgba(255,255,255,.55);
+    box-shadow:0 24px 50px -32px rgba(62,36,18,.4);
+    display:flex; flex-direction:column; align-items:center;
+    opacity:0; animation:rise 1.2s .55s var(--ease) forwards;
+  }
+
+  .label{
+    display:flex; align-items:center; gap:14px;
+    width:100%;
+    justify-content:center;
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:.38em;
+    text-transform:uppercase;
+    color:var(--chocolate);
+    margin-bottom:18px;
+  }
+  .label::before,.label::after{
+    content:""; flex:1; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(92,52,24,.3));
+  }
+  .label::after{transform:scaleX(-1)}
+
+  /* ---------- Boutique button ---------- */
+  .store{
+    position:relative;
+    width:100%;
+    display:flex; align-items:center;
+    padding:18px 22px 18px 18px;
+    border-radius:999px;
+    background:var(--espresso);
+    color:#FFF8EE;
+    text-decoration:none;
+    box-shadow:0 14px 28px -18px rgba(62,36,18,.7);
+    overflow:hidden;
+    transition:background .4s var(--ease), transform .45s var(--ease), box-shadow .45s;
+  }
+  .store:hover{background:#4A2911;transform:translateY(-2px);box-shadow:0 20px 34px -18px rgba(62,36,18,.75)}
+  .store:active{transform:translateY(0)}
+  .store:focus-visible{outline:2px solid var(--chocolate);outline-offset:4px}
+
+  .wa{flex:none;width:52px;height:52px;display:grid;place-items:center}
+  .wa svg{width:40px;height:40px}
+  .store-text{
+    flex:1; min-width:0;
+    /* balances the icon so text sits on the button's true centre */
+    padding-right:52px;
+    white-space:nowrap;
+  }
+  .city{
+    display:block;
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(21px,5.4vw,24px);
+    letter-spacing:.28em;
+    padding-left:.28em;
+    line-height:1.1;
+  }
+  .addr{
+    display:block; margin-top:8px;
+    font-size:clamp(12px,3.3vw,13px);
+    font-weight:300;
+    letter-spacing:.03em;
+    line-height:1.6;
+    color:rgba(255,244,228,.85);
+  }
+  .hours{
+    display:block; margin-top:6px;
+    font-size:11px;
+    font-weight:400; letter-spacing:.14em;
+    padding-left:.14em;
+    color:#EBD9BD;
+  }
+
+  .insta{
+    position:relative;
+    width:100%; margin-top:12px;
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    padding:17px 22px;
+    border-radius:999px;
+    border:1px solid rgba(92,52,24,.32);
+    background:transparent;
+    color:var(--espresso); text-decoration:none;
+    font-family:var(--sans); font-weight:500;
+    font-size:12px; letter-spacing:.32em; text-transform:uppercase;
+    transition:background .4s var(--ease), color .4s, border-color .4s, transform .45s var(--ease);
+  }
+  .insta svg{width:20px;height:20px;flex:none}
+  .insta span{padding-left:.32em}
+  .insta:hover{background:var(--espresso);border-color:var(--espresso);color:#FFF8EE;transform:translateY(-2px)}
+  .insta:active{transform:translateY(0) scale(.99)}
+  .insta:focus-visible{outline:2px solid var(--chocolate);outline-offset:4px}
+
+  .map{
+    margin-top:22px;
+    font-size:10.5px; font-weight:500; letter-spacing:.3em; text-transform:uppercase;
+    padding-left:.3em;
+    color:rgba(92,52,24,.7); text-decoration:none;
+    border-bottom:1px solid rgba(122,74,42,.25);
+    padding-bottom:4px;
+    transition:color .3s,border-color .3s;
+  }
+  .map:hover{color:var(--ink);border-color:var(--ink)}
+
+  /* footer inside panel */
+  .rule{
+    width:100%; margin:20px 0 16px; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(92,52,24,.28),transparent);
+  }
+  .love{
+    font-family:var(--serif);
+    font-size:clamp(19px,5vw,22px);
+    font-weight:400;
+    color:var(--espresso);
+  }
+  .love em{font-style:italic;font-weight:500}
+  .copy{
+    margin-top:12px;
+    font-size:10px; letter-spacing:.34em; text-transform:uppercase;
+    padding-left:.34em;
+    color:rgba(92,52,24,.55);
+  }
+
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  @media (min-width:700px){
+    main{padding-top:56px;padding-bottom:40px}
+    .panel{padding:32px 28px 26px}
+    .logo{width:340px}
+  }
+  @media (max-width:360px){
+    .store{padding:14px 16px 14px 12px}
+    .wa{width:42px;height:42px}.wa svg{width:38px;height:38px}
+    .store-text{padding-right:42px}
+  }
+  @media (max-height:760px) and (min-width:700px){
+    main{padding-top:28px}
+    .logo{width:250px}
+    .eyebrow{margin-top:10px}
+  }
+  @media (max-height:700px){
+    .panel{margin-top:22px;padding:20px 16px 16px}
+    .rule{margin:16px 0 12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .logo,.eyebrow,.panel{opacity:1}
+  }
+</style>
+</head>
+<body>
+  <div class="scene" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+
+  <main>
+    <header class="top">
+      <h1 class="visually-hidden">Al-Hijr — Muslim Women Shop</h1>
+      <img class="logo" src="assets/logo-light.png" alt="Al-Hijr" width="1890" height="840">
+      <p class="eyebrow"><span>Muslim Women Shop</span></p>
+    </header>
+
+    <section class="panel" aria-label="Наш бутик">
+      <h2 class="label">Наш бутик</h2>
+
+      <a class="store" id="wa-astana" target="_blank" rel="noopener" aria-label="Написать менеджеру бутика в Астане в WhatsApp">
+        <span class="wa" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="#FFF8EE">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </span>
+        <span class="store-text">
+          <span class="city">АСТАНА</span>
+          <span class="addr">ул. Мангилик Ел 17А<br>Коркем-центр</span>
+          <span class="hours">с 10:00 до 20:00</span>
+        </span>
+      </a>
+
+      <a class="insta" id="insta" target="_blank" rel="noopener" aria-label="Al-Hijr в Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/>
+        </svg>
+        <span>Instagram</span>
+      </a>
+
+      <a class="map" href="https://2gis.kz/astana/search/%D0%9C%D0%B0%D0%BD%D0%B3%D0%B8%D0%BB%D0%B8%D0%BA%20%D0%95%D0%BB%2017%D0%90" target="_blank" rel="noopener">Открыть на карте</a>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <p class="love">с любовью, ваш <em>Al-Hijr</em></p>
+    </section>
+  </main>
+
+<script>
+  // Номер WhatsApp менеджера: только цифры, с кодом страны, без + и пробелов
+  const MANAGER_WHATSAPP = "77026064221";
+  const GREETING = "Здравствуйте! Пишу с сайта Al-Hijr.";
+
+  document.getElementById("wa-astana").href =
+    "https://wa.me/" + MANAGER_WHATSAPP + "?text=" + encodeURIComponent(GREETING);
+  // Instagram: впишите имя аккаунта без @
+  const INSTAGRAM = "alhijr__co";
+  document.getElementById("insta").href = "https://www.instagram.com/" + INSTAGRAM + "/";
+</script>
+</body>
+</html>
