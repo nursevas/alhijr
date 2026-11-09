@@ -96,13 +96,14 @@
   }
   .eyebrow span{padding-left:.46em}
 
-  /* bottom: glass panel */
+  /* bottom: card + signature */
+  .bottom{width:100%;display:flex;flex-direction:column;align-items:center}
   .panel{
     width:100%;
     margin-top:36px;
-    padding:26px 22px 22px;
-    border-radius:26px;
-    background:rgba(250,245,237,.78);
+    padding:36px 28px 28px;
+    border-radius:28px;
+    background:rgba(250,245,237,.8);
     -webkit-backdrop-filter:blur(22px);
     backdrop-filter:blur(22px);
     border:1px solid rgba(255,255,255,.55);
@@ -111,108 +112,76 @@
     opacity:0; animation:rise 1.2s .55s var(--ease) forwards;
   }
 
-  .label{
-    display:flex; align-items:center; gap:14px;
-    width:100%;
-    justify-content:center;
-    font-family:var(--sans);
-    font-size:11px;
-    font-weight:500;
-    letter-spacing:.38em;
-    text-transform:uppercase;
-    color:var(--chocolate);
-    margin-bottom:18px;
-  }
-  .label::before,.label::after{
-    content:""; flex:1; height:1px;
-    background:linear-gradient(90deg,transparent,rgba(92,52,24,.3));
-  }
-  .label::after{transform:scaleX(-1)}
-
   /* ---------- Boutique info ---------- */
   .shop{
     width:100%;
     display:flex; flex-direction:column; align-items:center;
     text-align:center;
-    margin-bottom:22px;
+    margin-bottom:28px;
   }
   .city{
     font-family:var(--serif);
     font-weight:500;
-    font-size:clamp(18px,4.8vw,21px);
-    letter-spacing:.3em;
-    padding-left:.3em;
+    font-size:clamp(19px,5vw,22px);
+    letter-spacing:.36em;
+    padding-left:.36em;
     line-height:1.1;
     color:var(--espresso);
   }
+  .city::after{
+    content:""; display:block; width:26px; height:1px; margin:14px auto 0;
+    background:rgba(122,74,42,.45);
+  }
   .addr{
-    margin-top:12px;
+    margin-top:16px;
     display:flex; align-items:center; justify-content:center; gap:7px;
     font-size:clamp(12.5px,3.4vw,13.5px);
     font-weight:400;
     letter-spacing:.02em;
     line-height:1.4;
-    color:var(--ink);
+    color:rgba(62,36,18,.88);
+    text-decoration:none;
+    transition:color .3s;
   }
+  .addr:hover{color:var(--chocolate)}
   .addr svg{width:14px;height:14px;flex:none;color:var(--chocolate)}
   .hours{
-    margin-top:7px;
+    margin-top:8px;
     font-size:12px;
     font-weight:400;
     letter-spacing:.06em;
-    color:rgba(92,52,24,.72);
+    color:rgba(92,52,24,.62);
   }
 
-  /* ---------- Buttons (WhatsApp / Instagram) ---------- */
+  /* ---------- Button ---------- */
   .actions{width:100%;display:flex;flex-direction:column;gap:10px}
   .btn{
     width:100%;
     display:flex; align-items:center; justify-content:center; gap:11px;
-    padding:15px 22px;
+    padding:16px 22px;
     border-radius:999px;
     background:var(--espresso);
     color:#FFF8EE; text-decoration:none;
     font-family:var(--sans); font-weight:500;
-    font-size:11.5px; letter-spacing:.2em; text-transform:uppercase;
+    font-size:11px; letter-spacing:.2em; text-transform:uppercase;
     box-shadow:0 10px 22px -16px rgba(62,36,18,.65);
     transition:background .4s var(--ease), transform .45s var(--ease), box-shadow .45s;
   }
-  .btn svg{width:19px;height:19px;flex:none}
+  .btn svg{width:18px;height:18px;flex:none}
   .btn span{padding-left:.2em}
   .btn:hover{background:#4A2911;transform:translateY(-2px);box-shadow:0 16px 28px -16px rgba(62,36,18,.7)}
   .btn:active{transform:translateY(0) scale(.99)}
   .btn:focus-visible{outline:2px solid var(--chocolate);outline-offset:3px}
 
-
-  .map{
-    margin-top:22px;
-    font-size:10.5px; font-weight:500; letter-spacing:.3em; text-transform:uppercase;
-    padding-left:.3em;
-    color:rgba(92,52,24,.7); text-decoration:none;
-    border-bottom:1px solid rgba(122,74,42,.25);
-    padding-bottom:4px;
-    transition:color .3s,border-color .3s;
-  }
-  .map:hover{color:var(--ink);border-color:var(--ink)}
-
-  /* footer inside panel */
-  .rule{
-    width:100%; margin:20px 0 16px; height:1px;
-    background:linear-gradient(90deg,transparent,rgba(92,52,24,.28),transparent);
-  }
   .love{
+    margin-top:28px;
     font-family:var(--serif);
-    font-size:clamp(19px,5vw,22px);
+    font-size:clamp(17px,4.6vw,20px);
     font-weight:400;
-    color:var(--espresso);
+    color:rgba(92,52,24,.85);
+    opacity:0; animation:rise 1.2s .8s var(--ease) forwards;
   }
   .love em{font-style:italic;font-weight:500}
-  .copy{
-    margin-top:12px;
-    font-size:10px; letter-spacing:.34em; text-transform:uppercase;
-    padding-left:.34em;
-    color:rgba(92,52,24,.55);
-  }
 
   .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
@@ -237,7 +206,8 @@
     .logo{width:min(52%,200px)}
     .eyebrow{margin-top:20px}
     .panel{margin-top:22px;padding:20px 16px 16px}
-    .rule{margin:16px 0 12px}
+    .shop{margin-bottom:20px}
+    .love{margin-top:18px}
   }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important;transition:none!important}
@@ -330,15 +300,14 @@
       <p class="eyebrow"><span>Muslim Women Shop</span></p>
     </header>
 
-    <section class="panel" aria-label="Наш бутик">
-      <h2 class="label">Наш бутик</h2>
-
+    <div class="bottom">
+    <section class="panel" aria-label="Бутик в Астане">
       <div class="shop">
-        <h3 class="city">АСТАНА</h3>
-        <p class="addr">
+        <h2 class="city">АСТАНА</h2>
+        <a class="addr" href="https://2gis.kz/astana/search/%D0%9C%D0%B0%D0%BD%D0%B3%D0%B8%D0%BB%D0%B8%D0%BA%20%D0%95%D0%BB%2017%D0%90" target="_blank" rel="noopener" aria-label="Открыть адрес на карте">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.400-6.500 11-6.500 11z"/><circle cx="12" cy="10" r="2.300"/></svg>
           <span>ул. Мангилик Ел 17А, Коркем-центр</span>
-        </p>
+        </a>
         <p class="hours">ежедневно с 10:00 до 20:00</p>
       </div>
 
@@ -351,12 +320,9 @@
         </a>
       </div>
 
-      <a class="map" href="https://2gis.kz/astana/search/%D0%9C%D0%B0%D0%BD%D0%B3%D0%B8%D0%BB%D0%B8%D0%BA%20%D0%95%D0%BB%2017%D0%90" target="_blank" rel="noopener">Открыть на карте</a>
-
-      <div class="rule" aria-hidden="true"></div>
-
-      <p class="love">с любовью, ваш <em>Al-Hijr</em></p>
     </section>
+    <p class="love">с любовью, ваш <em>Al-Hijr</em></p>
+    </div>
   </main>
 
 <script>
