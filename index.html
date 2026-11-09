@@ -67,7 +67,7 @@
     width:100%; max-width:560px;
     min-height:100vh; min-height:100svh;
     margin:0 auto;
-    padding:clamp(36px,7svh,64px) 20px max(22px,env(safe-area-inset-bottom));
+    padding:clamp(56px,11svh,104px) 20px max(24px,env(safe-area-inset-bottom));
     display:flex; flex-direction:column; align-items:center; justify-content:space-between;
     text-align:center;
   }
@@ -75,25 +75,26 @@
   /* top: logo + tagline */
   .top{display:flex;flex-direction:column;align-items:center;width:100%}
   .logo{
-    width:min(74%, 330px);
+    width:min(58%, 250px);
     height:auto;
     filter:drop-shadow(0 4px 20px rgba(40,20,8,.40));
     opacity:0; animation:rise 1.2s .1s var(--ease) forwards;
   }
   .eyebrow{
-    margin-top:18px;
-    display:flex; align-items:center; gap:16px;
-    font-size:11px; font-weight:500;
-    letter-spacing:.44em; text-transform:uppercase;
+    margin-top:30px;
+    display:flex; align-items:center; gap:18px;
+    font-size:9.5px; font-weight:500;
+    letter-spacing:.46em; text-transform:uppercase;
     color:rgba(255,250,242,.95);
-    text-shadow:0 1px 12px rgba(40,20,8,.45);
+    font-weight:600;
+    text-shadow:0 1px 3px rgba(40,20,8,.55), 0 0 16px rgba(40,20,8,.5);
     opacity:0; animation:rise 1.2s .3s var(--ease) forwards;
   }
   .eyebrow::before,.eyebrow::after{
-    content:""; width:34px; height:1px; background:rgba(255,250,242,.8);
+    content:""; width:28px; height:1px; background:rgba(255,250,242,.8);
     box-shadow:0 0 8px rgba(40,20,8,.55);
   }
-  .eyebrow span{padding-left:.44em}
+  .eyebrow span{padding-left:.46em}
 
   /* bottom: glass panel */
   .panel{
@@ -128,75 +129,60 @@
   }
   .label::after{transform:scaleX(-1)}
 
-  /* ---------- Boutique button ---------- */
-  .store{
-    position:relative;
+  /* ---------- Boutique info ---------- */
+  .shop{
     width:100%;
-    display:flex; align-items:center;
-    padding:18px 22px 18px 18px;
-    border-radius:999px;
-    background:var(--espresso);
-    color:#FFF8EE;
-    text-decoration:none;
-    box-shadow:0 14px 28px -18px rgba(62,36,18,.7);
-    overflow:hidden;
-    transition:background .4s var(--ease), transform .45s var(--ease), box-shadow .45s;
-  }
-  .store:hover{background:#4A2911;transform:translateY(-2px);box-shadow:0 20px 34px -18px rgba(62,36,18,.75)}
-  .store:active{transform:translateY(0)}
-  .store:focus-visible{outline:2px solid var(--chocolate);outline-offset:4px}
-
-  .wa{flex:none;width:52px;height:52px;display:grid;place-items:center}
-  .wa svg{width:40px;height:40px}
-  .store-text{
-    flex:1; min-width:0;
-    /* balances the icon so text sits on the button's true centre */
-    padding-right:52px;
-    white-space:nowrap;
+    display:flex; flex-direction:column; align-items:center;
+    text-align:center;
+    margin-bottom:22px;
   }
   .city{
-    display:block;
     font-family:var(--serif);
     font-weight:500;
-    font-size:clamp(21px,5.4vw,24px);
-    letter-spacing:.28em;
-    padding-left:.28em;
+    font-size:clamp(18px,4.8vw,21px);
+    letter-spacing:.3em;
+    padding-left:.3em;
     line-height:1.1;
+    color:var(--espresso);
   }
   .addr{
-    display:block; margin-top:8px;
-    font-size:clamp(12px,3.3vw,13px);
-    font-weight:300;
-    letter-spacing:.03em;
-    line-height:1.6;
-    color:rgba(255,244,228,.85);
+    margin-top:12px;
+    display:flex; align-items:center; justify-content:center; gap:7px;
+    font-size:clamp(12.5px,3.4vw,13.5px);
+    font-weight:400;
+    letter-spacing:.02em;
+    line-height:1.4;
+    color:var(--ink);
   }
+  .addr svg{width:14px;height:14px;flex:none;color:var(--chocolate)}
   .hours{
-    display:block; margin-top:6px;
-    font-size:11px;
-    font-weight:400; letter-spacing:.14em;
-    padding-left:.14em;
-    color:#EBD9BD;
+    margin-top:7px;
+    font-size:12px;
+    font-weight:400;
+    letter-spacing:.06em;
+    color:rgba(92,52,24,.72);
   }
 
-  .insta{
-    position:relative;
-    width:100%; margin-top:12px;
-    display:flex; align-items:center; justify-content:center; gap:12px;
-    padding:17px 22px;
+  /* ---------- Buttons (WhatsApp / Instagram) ---------- */
+  .actions{width:100%;display:flex;flex-direction:column;gap:10px}
+  .btn{
+    width:100%;
+    display:flex; align-items:center; justify-content:center; gap:11px;
+    padding:15px 22px;
     border-radius:999px;
-    border:1px solid rgba(92,52,24,.32);
-    background:transparent;
-    color:var(--espresso); text-decoration:none;
+    background:var(--espresso);
+    color:#FFF8EE; text-decoration:none;
     font-family:var(--sans); font-weight:500;
-    font-size:12px; letter-spacing:.32em; text-transform:uppercase;
-    transition:background .4s var(--ease), color .4s, border-color .4s, transform .45s var(--ease);
+    font-size:11.5px; letter-spacing:.3em; text-transform:uppercase;
+    box-shadow:0 10px 22px -16px rgba(62,36,18,.65);
+    transition:background .4s var(--ease), transform .45s var(--ease), box-shadow .45s;
   }
-  .insta svg{width:20px;height:20px;flex:none}
-  .insta span{padding-left:.32em}
-  .insta:hover{background:var(--espresso);border-color:var(--espresso);color:#FFF8EE;transform:translateY(-2px)}
-  .insta:active{transform:translateY(0) scale(.99)}
-  .insta:focus-visible{outline:2px solid var(--chocolate);outline-offset:4px}
+  .btn svg{width:19px;height:19px;flex:none}
+  .btn span{padding-left:.3em}
+  .btn:hover{background:#4A2911;transform:translateY(-2px);box-shadow:0 16px 28px -16px rgba(62,36,18,.7)}
+  .btn:active{transform:translateY(0) scale(.99)}
+  .btn:focus-visible{outline:2px solid var(--chocolate);outline-offset:3px}
+
 
   .map{
     margin-top:22px;
@@ -233,21 +219,23 @@
   @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
   @media (min-width:700px){
-    main{padding-top:56px;padding-bottom:40px}
+    main{padding-top:72px;padding-bottom:40px}
     .panel{padding:32px 28px 26px}
-    .logo{width:340px}
+    .logo{width:270px}
   }
   @media (max-width:360px){
-    .store{padding:14px 16px 14px 12px}
-    .wa{width:42px;height:42px}.wa svg{width:38px;height:38px}
-    .store-text{padding-right:42px}
+    .btn{padding:14px 16px;letter-spacing:.24em}
+    .addr{font-size:12px}
   }
   @media (max-height:760px) and (min-width:700px){
-    main{padding-top:28px}
-    .logo{width:250px}
-    .eyebrow{margin-top:10px}
+    main{padding-top:36px}
+    .logo{width:200px}
+    .eyebrow{margin-top:18px}
   }
   @media (max-height:700px){
+    main{padding-top:36px}
+    .logo{width:min(52%,200px)}
+    .eyebrow{margin-top:20px}
     .panel{margin-top:22px;padding:20px 16px 16px}
     .rule{margin:16px 0 12px}
   }
@@ -345,25 +333,29 @@
     <section class="panel" aria-label="Наш бутик">
       <h2 class="label">Наш бутик</h2>
 
-      <a class="store" id="wa-astana" target="_blank" rel="noopener" aria-label="Написать менеджеру бутика в Астане в WhatsApp">
-        <span class="wa" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="#FFF8EE">
+      <div class="shop">
+        <h3 class="city">АСТАНА</h3>
+        <p class="addr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.400-6.500 11-6.500 11z"/><circle cx="12" cy="10" r="2.300"/></svg>
+          <span>ул. Мангилик Ел 17А, Коркем-центр</span>
+        </p>
+        <p class="hours">ежедневно с 10:00 до 20:00</p>
+      </div>
+
+      <div class="actions">
+        <a class="btn" id="wa-astana" target="_blank" rel="noopener" aria-label="Написать менеджеру в WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
           </svg>
-        </span>
-        <span class="store-text">
-          <span class="city">АСТАНА</span>
-          <span class="addr">ул. Мангилик Ел 17А<br>Коркем-центр</span>
-          <span class="hours">с 10:00 до 20:00</span>
-        </span>
-      </a>
-
-      <a class="insta" id="insta" target="_blank" rel="noopener" aria-label="Al-Hijr в Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/>
-        </svg>
-        <span>Instagram</span>
-      </a>
+          <span>WhatsApp</span>
+        </a>
+        <a class="btn" id="insta" target="_blank" rel="noopener" aria-label="Al-Hijr в Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5.200"/><circle cx="12" cy="12" r="4.100"/><circle cx="17.300" cy="6.700" r=".7" fill="currentColor"/>
+          </svg>
+          <span>Instagram</span>
+        </a>
+      </div>
 
       <a class="map" href="https://2gis.kz/astana/search/%D0%9C%D0%B0%D0%BD%D0%B3%D0%B8%D0%BB%D0%B8%D0%BA%20%D0%95%D0%BB%2017%D0%90" target="_blank" rel="noopener">Открыть на карте</a>
 
