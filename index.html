@@ -38,7 +38,16 @@
     position:fixed; inset:0; z-index:-2;
     background:url("assets/hero.jpg") 62% center/cover no-repeat;
     transform:scale(1.04);
+    /* смягчение: меньше мультяшности, спокойные тёплые тона, лёгкий фокус */
+    filter:saturate(.62) contrast(.94) brightness(1.03) sepia(.2) blur(1.6px);
     animation:drift 30s ease-in-out infinite alternate;
+  }
+  /* нарисованный фон отключён; чтобы вернуть его, уберите display:none и background/filter выше */
+  .scene svg{display:none;width:100%;height:100%}
+  .grain{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    opacity:.16; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .4  0 0 0 0 .3  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
   .veil{
     position:fixed; inset:0; z-index:-1;
@@ -249,8 +258,82 @@
 </style>
 </head>
 <body>
-  <div class="scene" aria-hidden="true"></div>
+  <div class="scene" aria-hidden="true">
+    <svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#C9A486"/>
+          <stop offset=".34" stop-color="#E4C6A2"/>
+          <stop offset=".6" stop-color="#F3E0C4"/>
+        </linearGradient>
+        <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#FFF6E2" stop-opacity=".95"/>
+          <stop offset=".35" stop-color="#FFF0D4" stop-opacity=".5"/>
+          <stop offset="1" stop-color="#FFE9C8" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="d1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6C9A3"/><stop offset="1" stop-color="#DDBA90"/></linearGradient>
+        <linearGradient id="d2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCB88F"/><stop offset="1" stop-color="#CFA67B"/></linearGradient>
+        <linearGradient id="d3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFA67B"/><stop offset="1" stop-color="#BC9066"/></linearGradient>
+        <filter id="soft"><feGaussianBlur stdDeviation="1.1"/></filter>
+      </defs>
+
+      <rect width="400" height="800" fill="url(#sky)"/>
+      <g transform="translate(0 -85)">
+      <circle cx="268" cy="395" r="150" fill="url(#sun)"/>
+
+      <!-- distant ridge -->
+      <path d="M0 478 L55 452 L112 474 L190 436 L270 470 L340 448 L400 466 V540 H0Z" fill="#BE9A82" opacity=".5" filter="url(#soft)"/>
+
+      <!-- far dune + old town silhouette -->
+      <path d="M0 505 C70 482 150 488 230 506 S350 522 400 500 V900 H0Z" fill="url(#d1)"/>
+      <g fill="#B58C76" opacity=".78" filter="url(#soft)">
+        <!-- minaret -->
+        <rect x="296" y="418" width="15" height="92"/>
+        <rect x="293" y="412" width="21" height="8"/>
+        <path d="M296 412 Q303.500 388 311 412Z"/>
+        <rect x="302.800" y="378" width="1.400" height="12"/>
+        <!-- low town -->
+        <rect x="236" y="478" width="52" height="32"/>
+        <path d="M244 478 Q256 458 268 478Z"/>
+        <rect x="318" y="486" width="46" height="24"/>
+      </g>
+      <g fill="#F3E0C4" opacity=".55">
+        <path d="M300 438 v10 a3 3 0 0 0 6 0 v-10 a3 3 0 0 0 -6 0z"/>
+        <path d="M246 492 v10 h5 v-10 a2.500 2.500 0 0 0 -5 0z"/>
+        <path d="M262 492 v10 h5 v-10 a2.500 2.500 0 0 0 -5 0z"/>
+        <path d="M328 496 v8 h5 v-8 a2.500 2.500 0 0 0 -5 0z"/>
+      </g>
+
+      <!-- mid dune -->
+      <path d="M0 566 C90 534 190 552 290 574 S380 570 400 560 V900 H0Z" fill="url(#d2)"/>
+
+      <!-- palms (silhouette) -->
+      <g stroke="#8F6A52" fill="none" stroke-linecap="round" opacity=".8">
+        <path d="M78 560 C80 530 76 510 82 486" stroke-width="3"/>
+        <g transform="translate(82 486)" stroke-width="2.200">
+          <path d="M0 0 Q-16 -8 -32 4"/><path d="M0 0 Q-12 -16 -26 -10"/><path d="M0 0 Q0 -18 -4 -26"/>
+          <path d="M0 0 Q14 -14 28 -6"/><path d="M0 0 Q18 -4 32 8"/><path d="M0 0 Q-8 6 -20 18"/><path d="M0 0 Q8 6 18 20"/>
+        </g>
+        <path d="M118 566 C119 548 117 538 121 524" stroke-width="2.200" opacity=".85"/>
+        <g transform="translate(121 524)" stroke-width="1.800" opacity=".85">
+          <path d="M0 0 Q-12 -6 -23 3"/><path d="M0 0 Q-8 -12 -19 -8"/><path d="M0 0 Q10 -10 20 -4"/><path d="M0 0 Q13 -2 23 7"/><path d="M0 0 Q-5 5 -14 13"/><path d="M0 0 Q5 5 13 14"/>
+        </g>
+      </g>
+
+      <!-- near dune -->
+      <path d="M0 650 C110 612 230 640 400 618 V900 H0Z" fill="url(#d3)"/>
+      </g>
+
+      <!-- thin oriental arch frame -->
+      <g fill="none" stroke="#FFF1D8" stroke-linecap="round">
+        <path d="M34 800 V338 C34 214 112 142 200 70 C288 142 366 214 366 338 V800" stroke-width="1.200" opacity=".42"/>
+        <path d="M52 800 V342 C52 228 122 162 200 96 C278 162 348 228 348 342 V800" stroke-width=".8" opacity=".26"/>
+        <path d="M200 52 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#FFF1D8" stroke="none" opacity=".4"/>
+      </g>
+    </svg>
+  </div>
   <div class="veil" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
   <main>
     <header class="top">
