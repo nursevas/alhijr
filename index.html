@@ -65,12 +65,22 @@
   /* ---------- Layout ---------- */
   main{
     width:100%; max-width:560px;
-    min-height:100vh; min-height:100svh;
+    height:100vh; height:100svh; min-height:560px;
     margin:0 auto;
-    padding:clamp(56px,11svh,104px) 20px max(24px,env(safe-area-inset-bottom));
-    display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+    padding:clamp(56px,11svh,104px) 20px clamp(56px,11svh,104px);
+    /* логотип сверху, карточка строго по центру экрана, подпись под ней */
+    position:relative;
+    display:flex; flex-direction:column; align-items:center;
     text-align:center;
   }
+  .top{padding-bottom:28px}
+  .bottom{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    padding:0 20px;
+    pointer-events:none;
+  }
+  .panel{position:relative;pointer-events:auto;max-width:520px}
 
   /* top: logo + tagline */
   .top{display:flex;flex-direction:column;align-items:center;width:100%}
@@ -100,7 +110,6 @@
   .bottom{width:100%;display:flex;flex-direction:column;align-items:center}
   .panel{
     width:100%;
-    margin-top:36px;
     padding:36px 28px 28px;
     border-radius:28px;
     background:rgba(250,245,237,.8);
@@ -174,12 +183,12 @@
   .btn:focus-visible{outline:2px solid var(--chocolate);outline-offset:3px}
 
   .love{
-    margin-top:28px;
+    position:absolute; left:0; right:0; top:calc(100% + 26px);
     font-family:var(--serif);
     font-size:clamp(17px,4.6vw,20px);
     font-weight:400;
+    text-align:center;
     color:rgba(92,52,24,.85);
-    opacity:0; animation:rise 1.2s .8s var(--ease) forwards;
   }
   .love em{font-style:italic;font-weight:500}
 
@@ -205,9 +214,10 @@
     main{padding-top:36px}
     .logo{width:min(52%,200px)}
     .eyebrow{margin-top:20px}
-    .panel{margin-top:22px;padding:20px 16px 16px}
+    .top{padding-bottom:16px}
+    .panel{padding:20px 16px 16px}
     .shop{margin-bottom:20px}
-    .love{margin-top:18px}
+    .love{top:calc(100% + 16px)}
   }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important;transition:none!important}
@@ -320,8 +330,8 @@
         </a>
       </div>
 
+      <p class="love">с любовью, ваш <em>Al-Hijr</em></p>
     </section>
-    <p class="love">с любовью, ваш <em>Al-Hijr</em></p>
     </div>
   </main>
 
