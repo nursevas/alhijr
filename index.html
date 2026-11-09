@@ -183,7 +183,8 @@
   .btn:focus-visible{outline:2px solid var(--chocolate);outline-offset:3px}
 
   .love{
-    position:absolute; left:0; right:0; top:calc(100% + 26px);
+    position:absolute; left:0; right:0;
+    bottom:max(30px, calc(env(safe-area-inset-bottom) + 20px));
     font-family:var(--serif);
     font-size:clamp(17px,4.6vw,20px);
     font-weight:400;
@@ -217,7 +218,7 @@
     .top{padding-bottom:16px}
     .panel{padding:20px 16px 16px}
     .shop{margin-bottom:20px}
-    .love{top:calc(100% + 16px)}
+    .love{bottom:20px}
   }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important;transition:none!important}
@@ -330,8 +331,8 @@
         </a>
       </div>
 
-      <p class="love">с любовью, ваш <em>Al-Hijr</em></p>
     </section>
+    <p class="love">с любовью, ваш <em>Al-Hijr</em></p>
     </div>
   </main>
 
